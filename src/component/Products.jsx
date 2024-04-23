@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { reciveProducts } from "../redux/ProductAction";
+import { BeatLoader } from "react-spinners";
 
 const Products = () => {
   const dispatch = useDispatch();
@@ -9,13 +10,13 @@ const Products = () => {
     reciveProducts(dispatch);
   }, []);
 
-  if (data == undefined) {
-    return <h1>loading......</h1>;
+  if (data.isLoading == true) {
+    return <BeatLoader color="#36d7b7" />;
   } else {
     return (
       <div>
         {data.products.map((item) => {
-          return <h3>{item.name}</h3>;
+          return <h4>{item.name}</h4>;
         })}
       </div>
     );

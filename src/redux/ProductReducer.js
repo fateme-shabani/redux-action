@@ -15,6 +15,8 @@ const ProductReducer = (state = initial_state, action) => {
     case "FAILED-DATA": {
       return { isLoading: false, products: [], error: action.payload };
     }
+    default:
+      return state;
   }
 };
 export default ProductReducer;
